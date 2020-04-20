@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hc1-W2-7w2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="aZP-2t-2zF">
+            <objects>
+                <viewController id="HkQ-jK-6ML" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f9k-1q-zeE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="VAb-0r-Teb"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="h9h-VC-QjK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vvx-tR-PzG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-459" y="123"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="MHK-t8-EAA">
+            <objects>
+                <tabBarController id="Hc1-W2-7w2" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lmY-cO-E2r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="gzk-ni-sEa"/>
+                        <segue destination="HkQ-jK-6ML" kind="relationship" relationship="viewControllers" id="PjH-BR-1zE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vJM-7H-6rA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1378" y="-199"/>
+        </scene>
+        <!--Dark Map View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="DarkMapViewController" customModule="bitrise_screenshot_automation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="InI-86-36X">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="734"/>
+                            </mapView>
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1h-yl-pQm" userLabel="City View">
+                                <rect key="frame" x="0.0" y="734" width="414" height="79"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dF0-gk-XEk">
+                                        <rect key="frame" x="20" y="29" width="80" height="21"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="City Name"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-cQ-Jta">
+                                        <rect key="frame" x="354" y="24.5" width="40" height="30"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Zoom"/>
+                                        <state key="normal" title="Zoom"/>
+                                        <connections>
+                                            <action selector="zoomToCityTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="bT3-bX-l75"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="City View"/>
+                                <constraints>
+                                    <constraint firstItem="dF0-gk-XEk" firstAttribute="centerY" secondItem="U1h-yl-pQm" secondAttribute="centerY" id="CcQ-MK-IYl"/>
+                                    <constraint firstAttribute="height" constant="79" id="ZoD-RA-r1a"/>
+                                    <constraint firstItem="dF0-gk-XEk" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="v5y-cQ-Jta" secondAttribute="leading" id="dJ6-0F-JFj"/>
+                                    <constraint firstItem="v5y-cQ-Jta" firstAttribute="firstBaseline" secondItem="dF0-gk-XEk" secondAttribute="firstBaseline" id="e7q-TC-mUy"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="v5y-cQ-Jta" secondAttribute="trailing" id="jrV-wS-onF"/>
+                                    <constraint firstItem="dF0-gk-XEk" firstAttribute="leading" secondItem="U1h-yl-pQm" secondAttribute="leadingMargin" id="mXt-0V-rn6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="Dark Map View"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="U1h-yl-pQm" secondAttribute="trailing" id="1t5-bw-O3Q"/>
+                            <constraint firstAttribute="trailing" secondItem="InI-86-36X" secondAttribute="trailing" id="Bxy-V9-Tkq"/>
+                            <constraint firstItem="InI-86-36X" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Ifr-pj-LGf"/>
+                            <constraint firstItem="U1h-yl-pQm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L20-CC-kJL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="U1h-yl-pQm" secondAttribute="bottom" id="XoM-W2-8k1"/>
+                            <constraint firstItem="InI-86-36X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YCp-5c-b3r"/>
+                            <constraint firstItem="InI-86-36X" firstAttribute="bottom" secondItem="U1h-yl-pQm" secondAttribute="top" id="cJB-Zl-wRz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Du7-i8-P4q"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="dF0-gk-XEk" id="1UA-f3-Ddo"/>
+                        <outlet property="mapView" destination="InI-86-36X" id="dgd-iO-316"/>
+                        <outlet property="zoomButton" destination="v5y-cQ-Jta" id="sjs-y5-fEC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-459" y="-542"/>
+        </scene>
+    </scenes>
+</document>

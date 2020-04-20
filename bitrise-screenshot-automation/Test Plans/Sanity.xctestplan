@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "0612A4E1-2451-4BD5-8262-EBBFA9E15093",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:bitrise-screenshot-automation.xcodeproj",
+      "identifier" : "62ECCB4A244E1A3F00AE8BE1",
+      "name" : "bitrise-screenshot-automation"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:bitrise-screenshot-automation.xcodeproj",
+        "identifier" : "62ECCB60244E1A4200AE8BE1",
+        "name" : "bitrise-screenshot-automationTests"
+      }
+    }
+  ],
+  "version" : 1
+}

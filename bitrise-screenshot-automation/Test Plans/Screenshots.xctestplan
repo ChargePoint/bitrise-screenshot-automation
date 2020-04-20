@@ -1,0 +1,54 @@
+{
+  "configurations" : [
+    {
+      "id" : "DA2E816B-C506-498B-9CAA-BB96FE153891",
+      "name" : "de",
+      "options" : {
+        "language" : "de",
+        "locationScenario" : {
+          "identifier" : "..\/..\/bitrise-screenshot-automation\/gpx\/berlin.gpx"
+        },
+        "region" : "DE"
+      }
+    },
+    {
+      "id" : "AC9BAB09-6D3A-40EF-BC9E-1F793AD82A3D",
+      "name" : "en",
+      "options" : {
+        "language" : "en",
+        "locationScenario" : {
+          "identifier" : "San Francisco, CA, USA",
+          "referenceType" : "built-in"
+        },
+        "region" : "US"
+      }
+    },
+    {
+      "id" : "827C9A92-D137-4499-B465-2E18055BDC76",
+      "name" : "ko",
+      "options" : {
+        "language" : "ko",
+        "locationScenario" : {
+          "identifier" : "..\/..\/bitrise-screenshot-automation\/gpx\/seoul.gpx"
+        },
+        "region" : "KR"
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "locationScenario" : {
+      "identifier" : "San Francisco, CA, USA",
+      "referenceType" : "built-in"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:bitrise-screenshot-automation.xcodeproj",
+        "identifier" : "62ECCB6B244E1A4200AE8BE1",
+        "name" : "bitrise-screenshot-automationUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
