@@ -28,11 +28,40 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Let's ensure the view has appeared by using the accessibility identifier
+        // we set up in the storyboard
         let darkMapVCView = app.otherElements["Dark Map View"];
         XCTAssertTrue(darkMapVCView.waitForExistence(timeout: 3))
+
+        // Now let's get a screenshot & save it to the xcresult as an attachment
         self.saveScreenshot("MyAutomation_darkMapView")
+    }
+
+    func testTodayWidgetScreenshot() throws {
+        // UI tests must launch the application that they test.
+        let app = XCUIApplication()
+        app.launch()
+
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        springboard.activate()
+
+        springboard.swipeRight()
+        springboard.swipeRight()
+
+        let editButton = springboard.buttons.firstMatch
+        XCTAssertTrue(editButton.waitForExistence(timeout: 3))
+        editButton.tap()
+
+        let widgetNamePredicate = NSPredicate(format: "label CONTAINS[c] 'TodayWidget'")
+        let addWidgetCells = springboard.cells.matching(widgetNamePredicate)
+        addWidgetCells.buttons.firstMatch.tap()
+
+        let doneButton = springboard.navigationBars.buttons.element(boundBy: 1)
+        doneButton.tap()
+        
+        self.saveScreenshot("MyAutomation_todayWidget")
+
+        app.activate()
     }
 
 //    func testLaunchPerformance() throws {

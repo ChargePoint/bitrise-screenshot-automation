@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62C8B20B244ECCA800C1AC78 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */; };
+		62C8B20E244ECCA800C1AC78 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */; };
+		62C8B211244ECCA800C1AC78 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */; };
+		62C8B215244ECCA800C1AC78 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 62C8B209244ECCA800C1AC78 /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		62E6DAEF244E2BA800EC2C02 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E6DAEE244E2BA800EC2C02 /* MapKit.framework */; };
 		62E6DAF5244E304C00EC2C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62E6DAF3244E304C00EC2C02 /* InfoPlist.strings */; };
 		62ECCB4F244E1A3F00AE8BE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ECCB4E244E1A3F00AE8BE1 /* AppDelegate.swift */; };
@@ -22,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		62C8B213244ECCA800C1AC78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62ECCB43244E1A3F00AE8BE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62C8B208244ECCA800C1AC78;
+			remoteInfo = TodayWidget;
+		};
 		62ECCB62244E1A4200AE8BE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 62ECCB43244E1A3F00AE8BE1 /* Project object */;
@@ -38,7 +49,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		62C8B216244ECCA800C1AC78 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				62C8B215244ECCA800C1AC78 /* TodayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		62C8B209244ECCA800C1AC78 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		62C8B210244ECCA800C1AC78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		62C8B212244ECCA800C1AC78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62E6DAEE244E2BA800EC2C02 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		62E6DAF1244E2EA600EC2C02 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		62E6DAF2244E2EA600EC2C02 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -68,6 +98,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		62C8B206244ECCA800C1AC78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C8B20B244ECCA800C1AC78 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62ECCB48244E1A3F00AE8BE1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,10 +131,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62C8B20C244ECCA800C1AC78 /* TodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */,
+				62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */,
+				62C8B212244ECCA800C1AC78 /* Info.plist */,
+			);
+			path = TodayWidget;
+			sourceTree = "<group>";
+		};
 		62E6DAED244E2BA800EC2C02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				62E6DAEE244E2BA800EC2C02 /* MapKit.framework */,
+				62C8B20A244ECCA800C1AC78 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,6 +158,7 @@
 				62ECCB4D244E1A3F00AE8BE1 /* bitrise-screenshot-automation */,
 				62ECCB64244E1A4200AE8BE1 /* bitrise-screenshot-automationTests */,
 				62ECCB6F244E1A4200AE8BE1 /* bitrise-screenshot-automationUITests */,
+				62C8B20C244ECCA800C1AC78 /* TodayWidget */,
 				62ECCB4C244E1A3F00AE8BE1 /* Products */,
 				62E6DAED244E2BA800EC2C02 /* Frameworks */,
 			);
@@ -120,6 +170,7 @@
 				62ECCB4B244E1A3F00AE8BE1 /* bitrise-screenshot-automation.app */,
 				62ECCB61244E1A4200AE8BE1 /* bitrise-screenshot-automationTests.xctest */,
 				62ECCB6C244E1A4200AE8BE1 /* bitrise-screenshot-automationUITests.xctest */,
+				62C8B209244ECCA800C1AC78 /* TodayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,6 +232,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		62C8B208244ECCA800C1AC78 /* TodayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62C8B219244ECCA800C1AC78 /* Build configuration list for PBXNativeTarget "TodayWidget" */;
+			buildPhases = (
+				62C8B205244ECCA800C1AC78 /* Sources */,
+				62C8B206244ECCA800C1AC78 /* Frameworks */,
+				62C8B207244ECCA800C1AC78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TodayWidget;
+			productName = TodayWidget;
+			productReference = 62C8B209244ECCA800C1AC78 /* TodayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		62ECCB4A244E1A3F00AE8BE1 /* bitrise-screenshot-automation */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62ECCB75244E1A4200AE8BE1 /* Build configuration list for PBXNativeTarget "bitrise-screenshot-automation" */;
@@ -188,10 +256,12 @@
 				62ECCB47244E1A3F00AE8BE1 /* Sources */,
 				62ECCB48244E1A3F00AE8BE1 /* Frameworks */,
 				62ECCB49244E1A3F00AE8BE1 /* Resources */,
+				62C8B216244ECCA800C1AC78 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				62C8B214244ECCA800C1AC78 /* PBXTargetDependency */,
 			);
 			name = "bitrise-screenshot-automation";
 			productName = "bitrise-screenshot-automation";
@@ -244,6 +314,9 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "ChargePoint, Inc.";
 				TargetAttributes = {
+					62C8B208244ECCA800C1AC78 = {
+						CreatedOnToolsVersion = 11.4;
+					};
 					62ECCB4A244E1A3F00AE8BE1 = {
 						CreatedOnToolsVersion = 11.4;
 					};
@@ -275,11 +348,20 @@
 				62ECCB4A244E1A3F00AE8BE1 /* bitrise-screenshot-automation */,
 				62ECCB60244E1A4200AE8BE1 /* bitrise-screenshot-automationTests */,
 				62ECCB6B244E1A4200AE8BE1 /* bitrise-screenshot-automationUITests */,
+				62C8B208244ECCA800C1AC78 /* TodayWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		62C8B207244ECCA800C1AC78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C8B211244ECCA800C1AC78 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62ECCB49244E1A3F00AE8BE1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -309,6 +391,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		62C8B205244ECCA800C1AC78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C8B20E244ECCA800C1AC78 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62ECCB47244E1A3F00AE8BE1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,6 +429,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		62C8B214244ECCA800C1AC78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62C8B208244ECCA800C1AC78 /* TodayWidget */;
+			targetProxy = 62C8B213244ECCA800C1AC78 /* PBXContainerItemProxy */;
+		};
 		62ECCB63244E1A4200AE8BE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 62ECCB4A244E1A3F00AE8BE1 /* bitrise-screenshot-automation */;
@@ -352,6 +447,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62C8B210244ECCA800C1AC78 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		62E6DAF3244E304C00EC2C02 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -382,6 +485,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		62C8B217244ECCA800C1AC78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LF3ZYA4TZA;
+				INFOPLIST_FILE = TodayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coulomb-example-code.bitrise-screenshot-automation.TodayWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62C8B218244ECCA800C1AC78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LF3ZYA4TZA;
+				INFOPLIST_FILE = TodayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.coulomb-example-code.bitrise-screenshot-automation.TodayWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		62ECCB73244E1A4200AE8BE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -499,6 +640,7 @@
 		62ECCB76244E1A4200AE8BE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LF3ZYA4TZA;
@@ -517,6 +659,7 @@
 		62ECCB77244E1A4200AE8BE1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LF3ZYA4TZA;
@@ -619,6 +762,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		62C8B219244ECCA800C1AC78 /* Build configuration list for PBXNativeTarget "TodayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C8B217244ECCA800C1AC78 /* Debug */,
+				62C8B218244ECCA800C1AC78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		62ECCB46244E1A3F00AE8BE1 /* Build configuration list for PBXProject "bitrise-screenshot-automation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
