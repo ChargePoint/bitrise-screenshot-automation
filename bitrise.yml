@@ -1,0 +1,193 @@
+---
+format_version: '8'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: ios
+trigger_map:
+- push_branch: "*"
+  workflow: screenshots
+- pull_request_source_branch: "*"
+  workflow: primary
+workflows:
+  deploy:
+    steps:
+    - activate-ssh-key@4.0:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4.0: {}
+    - cache-pull@2.1: {}
+    - script@1.1:
+        title: Do anything with Script step
+    - certificate-and-profile-installer@1.10: {}
+    - xcode-test@2.4:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+    - xcode-archive@2.7:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+        - export_method: "$BITRISE_EXPORT_METHOD"
+    - deploy-to-bitrise-io@1.9: {}
+    - cache-push@2.2: {}
+  primary:
+    steps:
+    - activate-ssh-key@4.0:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4.0: {}
+    - cache-pull@2.1: {}
+    - script@1.1:
+        title: Do anything with Script step
+    - certificate-and-profile-installer@1.10: {}
+    - xcode-test@2.4:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+    - deploy-to-bitrise-io@1.9: {}
+    - cache-push@2.2: {}
+  screenshots:
+    steps:
+    - activate-ssh-key@4.0:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@4.0: {}
+    - script@1:
+        title: Add missing simulators
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # Create the iPad Pro (12.9-inch) (2nd generation) simulator
+            xcrun simctl create "iPad Pro (12.9-inch) (2nd generation)" "com.apple.CoreSimulator.SimDeviceType.iPad-Pro--12-9-inch---2nd-generation-" "com.apple.CoreSimulator.SimRuntime.iOS-13-4"
+    - script@1:
+        title: Set up environment variables
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set -ex
+
+            # Pull any arguments that may have been set from Slack slash commands and such
+            if [ ! -z "$API_CHARGEPOINT_LANGUAGE" ] ; then
+              envman add --key CHARGEPOINT_LANGUAGE --value "$API_CHARGEPOINT_LANGUAGE"
+            fi
+            if [ ! -z "$API_CHARGEPOINT_UIINTERFACESTYLE" ] ; then
+              envman add --key CHARGEPOINT_UIINTERFACESTYLE --value "$API_CHARGEPOINT_UIINTERFACESTYLE"
+            fi
+            if [ ! -z "$API_CHARGEPOINT_IOS_DEVICE" ] ; then
+              envman add --key CHARGEPOINT_IOS_DEVICE --value "$API_CHARGEPOINT_IOS_DEVICE"
+            fi
+            if [ ! -z "$API_CHARGEPOINT_IOS_DEVICE_LANGUAGE" ] ; then
+              envman add --key CHARGEPOINT_IOS_DEVICE_LANGUAGE --value "$API_CHARGEPOINT_IOS_DEVICE_LANGUAGE"
+            fi
+            if [ ! -z "$API_CHARGEPOINT_IOS_DEVICE_REGION" ] ; then
+              envman add --key CHARGEPOINT_IOS_DEVICE_REGION --value "$API_CHARGEPOINT_IOS_DEVICE_REGION"
+            fi
+    - script@1:
+        title: Disable hardware keyboard in Simulator
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            defaults write com.apple.iphonesimulator ConnectHardwareKeyboard -bool false
+    - script@1:
+        title: Modify Simulator language before launch
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # Modify the iOS Simulator language before launch
+            find ~/Library/Developer/CoreSimulator/Devices/* -type d -maxdepth 0 -exec /usr/libexec/PlistBuddy -c "Delete :AppleLanguages" -c "Add :AppleLanguages array" -c "Add :AppleLanguages:0 string $CHARGEPOINT_IOS_DEVICE_LANGUAGE" -c "Delete :AppleLocale" -c "Add :AppleLocale string $CHARGEPOINT_IOS_DEVICE_REGION" {}/data/Library/Preferences/.GlobalPreferences.plist \;
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # Works on device & Simulator (affects only app) - Set the app's Info.plist to the style we want
+            #/usr/libexec/PlistBuddy -c 'Add :UIUserInterfaceStyle string "$CHARGEPOINT_UIINTERFACESTYLE"' bitrise-screenshot-automation/Info.plist
+
+            # Works on Simulator (affects whole device) - Modifies a system plist directly to work on Xcode 11.0 to Xcode 11.3
+            if [ "$CHARGEPOINT_UIINTERFACESTYLE" = "Dark" ]
+            then
+              echo "Setting Dark mode"
+              style=2
+            elif [ "$CHARGEPOINT_UIINTERFACESTYLE" = "Light" ]
+            then
+              echo "Setting Light mode"
+              style=1
+            fi
+
+            find ~/Library/Developer/CoreSimulator/Devices/* -type d -maxdepth 0 -exec /usr/libexec/PlistBuddy -c "Delete :UserInterfaceStyleMode" -c "Add :UserInterfaceStyleMode integer $style" {}/data/Library/Preferences/com.apple.uikitservices.userInterfaceStyleMode.plist \;
+        title: Set UIUserInterfaceStyle
+    - xcode-test@2.4:
+        inputs:
+        - project_path: "$BITRISE_PROJECT_PATH"
+        - scheme: "$BITRISE_SCHEME"
+        - export_uitest_artifacts: 'true'
+        - generate_code_coverage_files: 'yes'
+        - verbose: 'yes'
+        - is_clean_build: 'yes'
+        - xcodebuild_test_options: "-derivedDataPath derivedData -testPlan 'Screenshots'"
+        - headless_mode: 'no'
+        - simulator_device: "$CHARGEPOINT_IOS_DEVICE"
+    - xcparse@0:
+        inputs:
+        - screenshots_divide_by_language: 'yes'
+        - screenshots_divide_by_test: 'yes'
+        - screenshots_divide_by_region: 'yes'
+        is_always_run: true
+    - create-zip@0:
+        title: Attach xcresult as ZIP to Deploy
+        inputs:
+        - destination: "$BITRISE_DEPLOY_DIR"
+        - source_path: "$BITRISE_XCRESULT_PATH"
+        is_always_run: true
+    - deploy-to-bitrise-io@1.9: {}
+    envs:
+    - opts:
+        is_expand: false
+      CHARGEPOINT_IOS_DEVICE_LANGUAGE: ko-KR
+    - opts:
+        is_expand: false
+      CHARGEPOINT_IOS_DEVICE_REGION: ko-Kore_KR
+    meta:
+      bitrise.io:
+        stack: osx-xcode-11.4.x
+app:
+  envs:
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: bitrise-screenshot-automation.xcodeproj
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: bitrise-screenshot-automation
+  - opts:
+      is_expand: false
+    BITRISE_EXPORT_METHOD: development
+  - opts:
+      is_expand: false
+    CHARGEPOINT_IOS_DEVICE: iPhone 11 Pro Max
+  - opts:
+      is_expand: false
+    CHARGEPOINT_IOS_DEVICE_LANGUAGE: en
+  - opts:
+      is_expand: false
+    CHARGEPOINT_IOS_DEVICE_REGION: en_US
+  - opts:
+      is_expand: false
+    CHARGEPOINT_UIINTERFACESTYLE: Dark
+  - opts:
+      is_expand: false
+    CHARGEPOINT_LANGUAGE: en
