@@ -60,7 +60,7 @@ class bitrise_screenshot_automationUITests: XCTestCase {
         doneButton.tap()
 
         let todayLabel = springboard.staticTexts["Today Label"]
-        XCTAssertTrue(todayLabel.waitForExistence(timeout: 3))
+        todayLabel.waitForExistence(timeout: 3)
         
         self.saveScreenshot("MyAutomation_todayWidget")
 
