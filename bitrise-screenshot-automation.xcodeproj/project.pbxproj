@@ -11,6 +11,7 @@
 		62C8B20E244ECCA800C1AC78 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */; };
 		62C8B211244ECCA800C1AC78 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */; };
 		62C8B215244ECCA800C1AC78 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 62C8B209244ECCA800C1AC78 /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		62C8B21C2451733E00C1AC78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62C8B21A2451733E00C1AC78 /* InfoPlist.strings */; };
 		62E6DAEF244E2BA800EC2C02 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62E6DAEE244E2BA800EC2C02 /* MapKit.framework */; };
 		62E6DAF5244E304C00EC2C02 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 62E6DAF3244E304C00EC2C02 /* InfoPlist.strings */; };
 		62ECCB4F244E1A3F00AE8BE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ECCB4E244E1A3F00AE8BE1 /* AppDelegate.swift */; };
@@ -69,6 +70,10 @@
 		62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		62C8B210244ECCA800C1AC78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		62C8B212244ECCA800C1AC78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62C8B21B2451733E00C1AC78 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		62C8B21D2451733E00C1AC78 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/MainInterface.strings; sourceTree = "<group>"; };
+		62C8B21E2451744700C1AC78 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		62C8B21F2451744700C1AC78 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		62E6DAEE244E2BA800EC2C02 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		62E6DAF1244E2EA600EC2C02 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		62E6DAF2244E2EA600EC2C02 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -137,6 +142,7 @@
 				62C8B20D244ECCA800C1AC78 /* TodayViewController.swift */,
 				62C8B20F244ECCA800C1AC78 /* MainInterface.storyboard */,
 				62C8B212244ECCA800C1AC78 /* Info.plist */,
+				62C8B21A2451733E00C1AC78 /* InfoPlist.strings */,
 			);
 			path = TodayWidget;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C8B211244ECCA800C1AC78 /* MainInterface.storyboard in Resources */,
+				62C8B21C2451733E00C1AC78 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,8 +458,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				62C8B210244ECCA800C1AC78 /* Base */,
+				62C8B21D2451733E00C1AC78 /* de */,
+				62C8B21F2451744700C1AC78 /* ko */,
 			);
 			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		62C8B21A2451733E00C1AC78 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62C8B21B2451733E00C1AC78 /* de */,
+				62C8B21E2451744700C1AC78 /* ko */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		62E6DAF3244E304C00EC2C02 /* InfoPlist.strings */ = {
