@@ -1,6 +1,6 @@
 #  bitrise-screenshot-automation
 
-This is an example project for the first virtual Bitrise User Group (BUG) talk, "Automating Dark Mode Screenshots with Xcode 11".
+This is an example project for the [first virtual Bitrise User Group (BUG) talk, "Automating Dark Mode Screenshots with Xcode 11".](https://youtu.be/SI8rQp8HaQU?t=190)
 
 ## Setup
 
